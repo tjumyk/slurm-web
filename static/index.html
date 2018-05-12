@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slurm Web Interface</title>
+</head>
+<body>
+<h1>Slurm Web Interface</h1>
+<ul class="api-list"></ul>
+<script src="static/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.get('api').then(function (data) {
+            var $list = $('.api-list');
+            for (var i = 0; i < data.length; ++i) {
+                var url = data[i];
+                $list.append('<li><a href="' + url + '">' + url + '</a></li>')
+            }
+        })
+    })
+</script>
+</body>
+</html>
